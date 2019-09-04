@@ -112,3 +112,81 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const articles = document.querySelector('.articles');
+
+// Step 1:
+
+function createArticle(
+  title,
+  date,
+  firstParagraph,
+  secondParagraph,
+  thirdParagraph
+) {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('date');
+  const articleFirstParagraph = document.createElement('p');
+  const articleSecondParagraph = document.createElement('p');
+  const articleThirdParagraph = document.createElement('p');
+  const articleOpen = document.createElement('span');
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleOpen);
+  article.appendChild(articleFirstParagraph);
+  article.appendChild(articleSecondParagraph);
+  article.appendChild(articleThirdParagraph);
+
+  article.classList.add('article');
+  article.classList.add('date');
+  article.classList.add('p');
+  articleOpen.classList.add('expandButton');
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleFirstParagraph.textContent = firstParagraph;
+  articleSecondParagraph.textContent = secondParagraph;
+  articleThirdParagraph.textContent = thirdParagraph;
+  articleOpen.textContent = 'open';
+
+  // Step 2
+
+  articleOpen.addEventListener('click', event => {
+    console.log('button clicked', event.target);
+
+    article.classList.toggle('article-open');
+    article.classList.toggle('close');
+  });
+
+  // Step 3
+
+  return article;
+}
+
+// Step 4
+
+data.forEach(data => {
+  console.log('creating article', data.title);
+  articles.appendChild(
+    createArticle(
+      data.title,
+      data.date,
+      data.firstParagraph,
+      data.secondParagraph,
+      data.thirdParagraph
+    )
+  );
+});
+
+// Step 5
+articles.appendChild(
+  createArticle(
+    (title = 'Web23'),
+    (date = 'Sept 4th 2019'),
+    (firstParagraph = 'Paragraph 1'),
+    (secondParagraph = 'Paragraph 2'),
+    (thirdParagraph = 'Paragraph 3')
+  )
+);
