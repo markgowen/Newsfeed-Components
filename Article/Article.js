@@ -158,7 +158,6 @@ function createArticle(
 
     article.classList.toggle('article-open');
     article.classList.toggle('close');
-    article.style.height = '100%';
   });
 
   // Step 3
